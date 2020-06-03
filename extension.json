@@ -1,0 +1,22 @@
+{
+    "name": "ImageOptimizer",
+    "version": "1.0",
+    "author": [
+        "YohoYang"
+    ],
+    "url": "https://www.yohoyang.com/",
+    "descriptionmsg": "上传图片时自动压缩图片，支持jpg，png，gif",
+    "license-name": "GPL-2.0-or-later",
+    "type": "other",
+    "AutoloadClasses": {
+        "ImageOptimizer": "autoload.php"
+    },
+    "Hooks": {
+        "UploadVerifyFile": "ImageOptimizer::onUpload",
+        "UploadForm:BeforeProcessing": "ImageOptimizer::onUploadForm"
+    },
+    "config": {
+        "testconfig": true
+    },
+    "manifest_version": 1
+}
