@@ -31,22 +31,22 @@ class ImageOptimizer
         if ($newpath == null) {
             $newpath = $pathToImage;
         }
-        $MOZJPEG_PATH  = 'include/cjpeg';
-        $PNGQUANT_PATH = 'include/pngquant';
-        $GIFSICLE_PATH = 'include/gifsicle';
+        $MOZJPEG_PATH  = dirname(__FILE__) . '/' . 'include/cjpeg';
+        $PNGQUANT_PATH = dirname(__FILE__) . '/' . 'include/pngquant';
+        $GIFSICLE_PATH = dirname(__FILE__) . '/' . 'include/gifsicle';
         switch (mime_content_type($pathToImage)) {
             case 'image/jpeg':
-                shell_exec(dirname(__FILE__) . '/' . $MOZJPEG_PATH . ' -optimize -progressive ' . escapeshellarg($pathToImage) . ' > ' . escapeshellarg($pathToImage . 'yoho'));
+                shell_exec($MOZJPEG_PATH . ' -optimize -progressive ' . escapeshellarg($pathToImage) . ' > ' . escapeshellarg($pathToImage . 'yoho'));
                 copy($pathToImage . 'yoho', $newpath);
                 unlink($pathToImage . 'yoho');
                 break;
             case 'image/png':
-                shell_exec(dirname(__FILE__) . '/' . $PNGQUANT_PATH . ' -f ' . escapeshellarg($pathToImage) . ' -o ' . escapeshellarg($pathToImage . 'yoho'));
+                shell_exec($PNGQUANT_PATH . ' -f ' . escapeshellarg($pathToImage) . ' -o ' . escapeshellarg($pathToImage . 'yoho'));
                 copy($pathToImage . 'yoho', $newpath);
                 unlink($pathToImage . 'yoho');
                 break;
             case 'image/gif':
-                shell_exec(dirname(__FILE__) . '/' . $GIFSICLE_PATH . ' -O3 --scale 0.5 -i ' . escapeshellarg($pathToImage) . ' -o ' . escapeshellarg($pathToImage . 'yoho'));
+                shell_exec($GIFSICLE_PATH . ' -O3 --scale 0.5 -i ' . escapeshellarg($pathToImage) . ' -o ' . escapeshellarg($pathToImage . 'yoho'));
                 copy($pathToImage . 'yoho', $newpath);
                 unlink($pathToImage . 'yoho');
                 break;
