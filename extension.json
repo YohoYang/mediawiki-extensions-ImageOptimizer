@@ -4,7 +4,7 @@
     "author": [
         "YohoYang"
     ],
-    "url": "https://www.yohoyang.com/",
+    "url": "https://github.com/YohoYang/mediawiki-extensions-ImageOptimizer",
     "descriptionmsg": "上传图片时自动压缩图片，支持jpg，png，gif",
     "license-name": "GPL-2.0-or-later",
     "type": "other",
